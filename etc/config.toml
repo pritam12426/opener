@@ -1,0 +1,189 @@
+[defaults]
+	audio_default = [
+		{ command = [ "mpv" , "--" ] },
+		{ command = [ "mediainfo" ], pager = true },
+		{ command = [ "ffplay", "-loop", "0", "-seek_interval", "5" ], fork = true, silent = true }
+	]
+
+	image_default = [
+		{ command = [ "ffplay", "-loop", "1" ], fork = true, silent = true },
+		{ command = [ "qlmanage", "-p", "--" ], fork = true, silent = true },
+		{ command = [ "open" ], fork = true, silent = true },
+		{ command = [ "exiftool" ], pager = true }
+	]
+
+	video_default = [
+		{ command = [ "ffplay", "-loop", "0", "-seek_interval", "5" ], fork = true, silent = true },
+		{ command = [ "mpv", "--" ], fork = true, silent = true },
+		{ command = [ "mpv", "--mute", "on", "--" ], fork = true, silent = true },
+		{ command = [ "open" ], fork = true, silent = true },
+		{ command = [ "mediainfo" ], pager = true }
+	]
+
+	text_default  = [
+		{ command = [ "nvim" ] },
+		{ command = [ "zed" ], fork = true, silent = true },
+		{ command = [ "less" ], pager = true },
+		{ command = [ "bat", "--paging=always" ], pager = true }
+	]
+
+	archive_default = [
+		{ command   = [ "open" ], fork = true, silent = true },
+		{ command   = [ "bsdtar","-xvf" ] }
+	]
+
+	reader_default = [
+		{ command  = [ "qlmanage", "-p", "--", ] },
+		{ command  = [ "open" ], fork = true, silent = true }
+	]
+
+[extension]
+	## image formats
+	avif = "image_default"
+	bmp = "image_default"
+	gif = "image_default"
+	heic = "image_default"
+	jpeg = "image_default"
+	jpe = "image_default"
+	jpg = "image_default"
+	jxl = "image_default"
+	pgm = "image_default"
+	png = "image_default"
+	ppm = "image_default"
+	webp = "image_default"
+
+	svg.app_list = [
+		{ command = [ "qlmanage", "-p", "--" ] },
+		{ command = [ "inkscape" ], fork = true, silent = true }
+	]
+	tiff.app_list = [
+		{ command = [ "qimgv" ], fork = true, silent = true },
+		{ command = [ "krita" ], fork = true, silent = true }
+	]
+
+	## audio formats
+	aac = "audio_default"
+	ac3 = "audio_default"
+	aiff = "audio_default"
+	ape = "audio_default"
+	dts = "audio_default"
+	flac = "audio_default"
+	m4a = "audio_default"
+	mp3 = "audio_default"
+	oga = "audio_default"
+	ogg = "audio_default"
+	opus = "audio_default"
+	wav = "audio_default"
+	wv = "audio_default"
+
+	## video formats
+	avi = "video_default"
+	av1 = "video_default"
+	flv = "video_default"
+	mkv = "video_default"
+	m4v = "video_default"
+	mov = "video_default"
+	mp4 = "video_default"
+	ts = "video_default"
+	webm = "video_default"
+	wmv = "video_default"
+
+	## text formats
+	build = "text_default"
+	c = "text_default"
+	cmake = "text_default"
+	conf = "text_default"
+	cpp = "text_default"
+	css = "text_default"
+	csv = "text_default"
+	cu = "text_default"
+	ebuild = "text_default"
+	eex = "text_default"
+	env = "text_default"
+	ex = "text_default"
+	exs = "text_default"
+	go = "text_default"
+	h = "text_default"
+	hpp = "text_default"
+	hs = "text_default"
+	html = "text_default"
+	ini = "text_default"
+	java = "text_default"
+	js = "text_default"
+	json = "text_default"
+	kt = "text_default"
+	lua = "text_default"
+	log = "text_default"
+	md = "text_default"
+	micro = "text_default"
+	ninja = "text_default"
+	norg = "text_default"
+	org = "text_default"
+	py = "text_default"
+	rkt = "text_default"
+	rs = "text_default"
+	scss = "text_default"
+	sh = "text_default"
+	srt = "text_default"
+	svelte = "text_default"
+	toml = "text_default"
+	tsx = "text_default"
+	txt = "text_default"
+	vim = "text_default"
+	xml = "text_default"
+	yaml = "text_default"
+	yml = "text_default"
+
+	# archive formats
+	7z  = "archive_default"
+	bz2 = "archive_default"
+	gz  = "archive_default"
+	tar = "archive_default"
+	tgz = "archive_default"
+	rar = "archive_default"
+	xz  = "archive_default"
+	zip = "archive_default"
+	zst = "archive_default"
+
+	m3u.app_list = [
+		{ command = "mpv" },
+		{ command = "zed", fork = true, silent = true },
+		{ command = "bat", pager = true }
+	]
+
+	odt = "reader_default"
+	odf = "reader_default"
+	ods = "reader_default"
+	odp = "reader_default"
+
+	doc  = "reader_default"
+	docx = "reader_default"
+	xls  = "reader_default"
+	xlsx = "reader_default"
+	ppt  = "reader_default"
+	pptx = "reader_default"
+
+	pdf = "reader_default"
+	pdf.append = { command = "firefox", fork = true, silent = true }
+
+	tex.app_list  = [
+		{ command = "zed", fork = true, silent = true },
+		{ command = "bat", pager = true }
+	]
+
+	torrent.app_list = [
+		{ command = [ "open", "-a", "qBittorrent" ], silent = true }
+	]
+
+[mimetype]
+	# application/octet-stream
+	[mimetype.application.subtype.octet-stream]
+		inherit = "video_default"
+
+	# text/*
+	[mimetype.text]
+		inherit = "text_default"
+
+	# video/*
+	[mimetype.video]
+		inherit = "video_default"

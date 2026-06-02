@@ -1,0 +1,1 @@
+Add support of (open ssl - certificates) for https +SecureConnection
